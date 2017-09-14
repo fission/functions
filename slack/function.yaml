@@ -1,0 +1,47 @@
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: 2017-09-14T01:13:29Z
+  name: slack-post-message
+  namespace: default
+  resourceVersion: "19336"
+  selfLink: /apis/fission.io/v1/namespaces/default/packages/slack-post-message
+  uid: eb27dd0e-98e9-11e7-9d79-0800277ae3c3
+spec:
+  deployment:
+    checksum:
+      sum: ""
+      type: ""
+    literal: J3VzZSBzdHJpY3QnOwoKbGV0IGh0dHBzID0gcmVxdWlyZSgnaHR0cHMnKTsKCi8vIFRoZSBzbGFja1dlYmhvb2tQYXRoIHBhdGggbG9va3Mgc29tZXRoaW5nIGxpa2UgIi9zZXJ2aWNlcy9YWFgvWVlZL3paejEyMyIuICBUbyBnZXQgc3VjaCBhIHBhdGgsCi8vIHVzZSBzbGFjayB0byBjcmVhdGUgYW4gImluY29taW5nIHdlYmhvb2siLCBhbmQgcGFzcyB0aGUgcmVsYXRpdmUgVVJMIHBhcnQgb2YgdGhhdCB3ZWJob29rIGZvcgovLyB0aGlzIGZ1bmN0aW9uLgovLyBGb3IgbW9yZSBkZXRhaWxzIHNlZSBodHRwczovL2FwaS5zbGFjay5jb20vaW5jb21pbmctd2ViaG9va3MKYXN5bmMgZnVuY3Rpb24gc2VuZFNsYWNrTWVzc2FnZShzbGFja1dlYmhvb2tQYXRoLCBtc2cpIHsKICAgIGxldCBwb3N0RGF0YSA9IEpTT04uc3RyaW5naWZ5KHsidGV4dCI6IG1zZ30pOwogICAgbGV0IG9wdGlvbnMgPSB7CiAgICAgICAgaG9zdG5hbWU6ICJob29rcy5zbGFjay5jb20iLAogICAgICAgIHBhdGg6IHNsYWNrV2ViaG9va1BhdGgsCiAgICAgICAgbWV0aG9kOiAiUE9TVCIsCiAgICAgICAgaGVhZGVyczogewogICAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iCiAgICAgICAgfQogICAgfTsKCiAgICBjb25zb2xlLmxvZyhgc2VuZGluZyBzbGFjayByZXF1ZXN0YCk7CiAgICByZXR1cm4gbmV3IFByb21pc2UoZnVuY3Rpb24ocmVzb2x2ZSwgcmVqZWN0KSB7CiAgICAgICAgbGV0IHJlcSA9IGh0dHBzLnJlcXVlc3Qob3B0aW9ucywgZnVuY3Rpb24ocmVzKSB7CiAgICAgICAgICAgIGNvbnNvbGUubG9nKGBzbGFjayByZXF1ZXN0IHN0YXR1cyA9ICR7cmVzLnN0YXR1c0NvZGV9YCk7CiAgICAgICAgICAgIHJlc29sdmUoKTsgLy8gVE9ETzogY2hlY2sgc3RhdHVzIGNvZGUgYW5kIHJlamVjdCgpIG9uIGVycm9yCiAgICAgICAgICAgIHJldHVybgogICAgICAgIH0pOwogICAgICAgIHJlcS53cml0ZShwb3N0RGF0YSk7CiAgICAgICAgcmVxLmVuZCgpOwogICAgfSk7Cn0KCi8vIFBvc3RzIDxib2R5Lm1lc3NhZ2U+IHRvIGhvb2tzLnNsYWNrLmNvbS88Ym9keS5wYXRoPgptb2R1bGUuZXhwb3J0cyA9IGFzeW5jIGZ1bmN0aW9uKGNvbnRleHQpIHsKICAgIGxldCBiID0gY29udGV4dC5yZXF1ZXN0LmJvZHk7CiAgICBsZXQgbXNnID0gYi5tZXNzYWdlOwogICAgbGV0IHBhdGggPSBiLnBhdGg7CiAgICBjb25zb2xlLmxvZyhgU2VuZGluZyAke21zZ30gdG8gJHtwYXRofWApOwogICAgYXdhaXQgc2VuZFNsYWNrTWVzc2FnZShwYXRoLCBtc2cpOwogICAgcmV0dXJuIHsgc3RhdHVzOiAyMDAsIGJvZHk6ICIiIH07ICAgIAp9Cg==
+    type: literal
+    url: ""
+  environment:
+    name: nodejs
+    namespace: default
+  source:
+    checksum:
+      sum: ""
+      type: ""
+    literal: null
+    type: ""
+    url: ""
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: 2017-09-14T01:13:29Z
+  name: slack-post-message
+  namespace: default
+  resourceVersion: "19337"
+  selfLink: /apis/fission.io/v1/namespaces/default/functions/slack-post-message
+  uid: eb28c355-98e9-11e7-9d79-0800277ae3c3
+spec:
+  environment:
+    name: nodejs
+    namespace: default
+  package:
+    functionName: ""
+    packageref:
+      name: slack-post-message
+      namespace: default
+      resourceversion: "19336"
