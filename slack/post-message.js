@@ -18,11 +18,22 @@ async function sendSlackMessage(slackWebhookPath, msg) {
     };
 
     console.log(`sending slack request`);
-    return new Promise(function(resolve, reject) {
-        let req = https.request(options, function(res) {
+    return new Promise(function (resolve, reject) {
+        let req = https.request(options, function (res) {
             console.log(`slack request status = ${res.statusCode}`);
-            resolve(); // TODO: check status code and reject() on error
-            return
+
+            res.on('data', () => {
+                try {
+                    if (res.statusCode >= 400) {
+                        reject(res.statusCode);
+                        return
+                    }
+                    resolve();
+                }
+                catch (e) {
+                    console.error(e.message);
+                }
+            });
         });
         req.write(postData);
         req.end();
@@ -30,20 +41,27 @@ async function sendSlackMessage(slackWebhookPath, msg) {
 }
 
 // Posts <body.message> to hooks.slack.com/<body.path>
-module.exports = async function(context) {
+module.exports = async function (context) {
     let b = context.request.body;
     if (!b) {
-        return { status: 400,  body: 'missing body' };
+        return {status: 400, body: 'missing body'};
     }
     if (!b.message) {
-        return { status: 400, body: 'missing message' };
+        return {status: 400, body: 'missing message'};
     }
     if (!b.path) {
-        return { status: 400, body: 'missing path' };
+        return {status: 400, body: 'missing path'};
     }
     let msg = b.message;
     let path = b.path;
     console.log(`Sending ${msg} to ${path}`);
-    await sendSlackMessage(path, msg);
-    return { status: 200, body: "" };
+    try {
+        await sendSlackMessage(path, msg);
+        return {status: 200, body: ""};
+    } catch (e) {
+        return {
+            status: 500,
+            body: e.message
+        }
+    }
 }
