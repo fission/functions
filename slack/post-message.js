@@ -32,9 +32,18 @@ async function sendSlackMessage(slackWebhookPath, msg) {
 // Posts <body.message> to hooks.slack.com/<body.path>
 module.exports = async function(context) {
     let b = context.request.body;
+    if (!b) {
+        return { status: 400,  body: 'missing body' };
+    }
+    if (!b.message) {
+        return { status: 400, body: 'missing message' };
+    }
+    if (!b.path) {
+        return { status: 400, body: 'missing path' };
+    }
     let msg = b.message;
     let path = b.path;
     console.log(`Sending ${msg} to ${path}`);
     await sendSlackMessage(path, msg);
-    return { status: 200, body: "" };    
+    return { status: 200, body: "" };
 }
